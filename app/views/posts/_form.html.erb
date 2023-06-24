@@ -1,20 +1,24 @@
-<%= form_with model: @post, local: true do |f|%>
-  <div class="field">
-    <%= f.label :title, "タイトル" %><br />
-    <%= f.text_field :title, class:"mb-3", id:"prototype_title" %>
+<body class="text-center">
+    
+<main class="form-signin">
+  <%= form_with model: @post, local: true do |form|%>
+  <h1 class="h3 mb-3 fw-normal">New Spot</h1>
+  <br/>
+  <div class="form-floating">
+    <%= form.text_field :title, class: "form-control", id: "floatingInput", placeholder: "Title" %>
+    <%= form.label :title, "Title", class: "form-label", for: "floatingInput" %>
   </div>
-
-  <div class="field">
-    <%= f.label :content, "投稿の説明" %><br />
-    <%= f.text_area :content, class:"mb-3", id:"prototype_catch_copy" %>
+  <div class="form-floating">
+    <%= form.text_area :content, class: "form-control", id: "floatingInput", placeholder: "Content" %>
+    <%= form.label :content, "Content", class: "form-label", for: "floatingInput" %>
   </div>
-
+  <br/>
   <div class="d-flex justify-content-center mb-3">
-    <%= f.label :shooting_date, "撮影日　" %><br />
+    <%= form.label :shooting_date, "撮影日　" %><br />
     <%= raw sprintf(
-      f.date_select(
+      form.date_select(
           :shooting_date,
-          class:'select-birth',
+          class:'form-control',
           id:"birth-date",
           use_month_numbers: true,
           prompt:'--',
@@ -24,13 +28,16 @@
           "<p> 　年　 </p>", "<p> 　月　 </p>") + "<p> 　日　 </p>" %>
   </div>
 
-
   <div class="field">
-    <%= f.label :image, "投稿する画像" %><br />
-    <%= f.file_field :image, class: "form-control-file mb-3", id:"exampleFormControlFile1" %>
+    <%= form.label :image, "Image", class: "form-label", for: "floatingInput" %><br/>
+    <%= form.file_field :image, class: "form-control-file mb-3", id:"exampleFormControlFile1" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "投稿する", class: :form__btn  %>
-  </div>
+  <br/>
+  <%= form.submit "新規投稿", class: "w-100 btn btn-lg btn-primary" %>
 <% end %>
+
+</main>
+
+
+    
+</body>
