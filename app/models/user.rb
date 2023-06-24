@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates_length_of :password, minimum: 6
+  has_many :user
 end
