@@ -1,0 +1,28 @@
+<div class="form-signin">
+  <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <div class="field">
+      <%= f.label :nickname, "ニックネーム" %><br />
+      <%= f.text_field :nickname, id:"user_name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "メールアドレス" %><br />
+      <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "パスワード（6文字以上）" %><br />
+      <%= f.password_field :password, id:"user_password", autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "パスワード再入力" %><br />
+      <%= f.password_field :password_confirmation, id:"user_password_confirmation", autocomplete: "new-password" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Sign up", class: :form__btn  %>
+    </div>
+  <% end %>
+</div>
