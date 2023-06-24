@@ -1,7 +1,9 @@
 <% @posts.each do |post| %>
   <div class="col">
     <div class="card shadow-sm">
-      <%= image_tag post.image, class: "bd-placeholder-img card-img-top" %>
+      <%= link_to post_path(post.id) do %>
+        <%= image_tag post.image, class: "bd-placeholder-img card-img-top" %>
+      <% end %>
 
       <div class="card-body">
         <h5 class="card-text"><%= post.title %></h5>

@@ -9,4 +9,11 @@ class Post < ApplicationRecord
   validates :shooting_date
   end
 
+  def self.search(search)
+    if search != ""
+      Post.where('title LIKE(?) OR content LIKE(?)', "%#{search}%", "%#{search}%")
+    else
+      Post.all
+    end
+  end
 end
