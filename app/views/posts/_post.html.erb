@@ -9,10 +9,7 @@
         <h4 class="card-title"><%= post.title %></h4>
         <p class="card-text"><%= post.content %></p>
         <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-          </div>
+          <div class="btn-group"></div>
           <small class="text-muted"><%= time_ago_in_words(post.created_at) %></small>
         </div>
       </div>

@@ -12,9 +12,6 @@
 
     
 
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -31,61 +28,34 @@
       }
     </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
     
 <main class="form-signin">
-<!--
-  <%= form_with model: @user, url: user_session_path, local: true do |form| %>
-    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
-    <div class="form-floating">
-      <%= form.text_field :nickname, class: "form-control", id: "floatingInput", placeholder: "Nickname" %>
-      <%= form.label :nickname, "Nickname", class: "form-label", for: "floatingInput" %>
-    </div>
-    <div class="form-floating">
-      <%= form.email_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com" %>
-      <%= form.label :email, "Email address", class: "form-label", for: "floatingInput" %>
-    </div>
-    <div class="form-floating">
-      <%= form.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password" %>
-      <%= form.label :password, "Password", class: "form-label", for: "floatingPassword" %>
-    </div>
-    <div class="form-floating">
-      <%= form.password_field :password_confirmation, class: "form-control", id: "floatingPassword", placeholder: "Password Confirmation" %>
-      <%= form.label :password_confirmation, "Password Confirmation", class: "form-label", for: "floatingPassword" %>
-    </div>
-
-    <%= form.submit "Sign up", class: "w-100 btn btn-lg btn-primary" %>
-  <% end %>
--->
-  <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+  <h1 class="h3 mb-4 fw-normal">Please sign up</h1>
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-    <div class="field">
-      <%= f.label :nickname, "ニックネーム" %><br />
-      <%= f.text_field :nickname, id:"user_name" %>
+    <div class="form-floating mb-2">
+      <%= f.text_field :nickname, id:"user_name", class: "form-control" %>
+      <%= f.label :nickname, "Nickname", class: "form-label" %>
     </div>
 
-    <div class="field">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" %>
+    <div class="form-floating">
+      <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email", class: "form-control" %>
+      <%= f.label :email, "e-mail", class: "form-label" %>
+
+    <div class="form-floating">
+      <%= f.password_field :password, id:"user_password", autocomplete: "new-password", class: "form-control" %>
+      <%= f.label :password, "Password（minimum 6）", class: "form-label" %>
     </div>
 
-    <div class="field">
-      <%= f.label :password, "パスワード（6文字以上）" %><br />
-      <%= f.password_field :password, id:"user_password", autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation, "パスワード再入力" %><br />
-      <%= f.password_field :password_confirmation, id:"user_password_confirmation", autocomplete: "new-password" %>
+    <div class="form-floating">
+      <%= f.password_field :password_confirmation, id:"user_password_confirmation", autocomplete: "new-password", class: "form-control" %>
+      <%= f.label :password_confirmation, "Password Confirmation", class: "form-label" %>
     </div>
     <br>
-    <div class="actions">
-      <%= f.submit "Sign up", class: :form__btn  %>
+    <div class="form-floating">
+      <%= f.submit "Sign up", class: "w-100 btn btn-lg btn-primary" %>
     </div>
   <% end %>
 </main>

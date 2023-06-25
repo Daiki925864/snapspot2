@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post.update(post_params)
     if @post.save
-      redirect_to prototype_path(@post.id)
+      redirect_to post_path(@post.id)
     else
       render :edit
     end

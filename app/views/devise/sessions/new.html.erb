@@ -10,10 +10,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -31,27 +27,26 @@
       }
     </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
     
 <main class="form-signin">
   <h2 class="page-heading">Login</h2>
-  <%= form_with model: @user, url: user_session_path, local: true do |form| %>
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <br>
+  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
     <div class="form-floating">
-      <%= form.email_field :email, class: "form-control", id: "floatingInput", placeholder: "name@example.com" %>
-      <%= form.label :email, "Email address", class: "form-label", for: "floatingInput" %>
-    </div>
-    <div class="form-floating">
-      <%= form.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password" %>
-      <%= form.label :password, "Password", class: "form-label", for: "floatingPassword" %>
-    </div>
+      <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email", class: "form-control" %>
+      <%= f.label :email, "e-mail", class: "form-label" %>
 
-    <%= form.submit "Sign in", class: "w-100 btn btn-lg btn-primary" %>
+    <div class="form-floating">
+      <%= f.password_field :password, id:"user_password", autocomplete: "new-password", class: "form-control" %>
+      <%= f.label :password, "Password（minimum 6）", class: "form-label" %>
+    </div>
+    <br>
+    <div class="form-floating">
+      <%= f.submit "Login", class: "w-100 btn btn-lg btn-primary" %>
+    </div>
   <% end %>
 </main>
 
