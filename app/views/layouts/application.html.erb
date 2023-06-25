@@ -12,8 +12,7 @@
 
     
 
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 
     <style>
       .bd-placeholder-img {
@@ -32,8 +31,7 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
-    <link href="navbar-top-fixed.css" rel="stylesheet">
+    
 </head>
 
   <body>
@@ -58,10 +56,10 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
+              <%= f.text_field :keyword, placeholder: "Search", class: "form-control me-2" %>
+              <%= f.submit "Search", class: "btn btn-outline-success" %>
+            <% end %>
           </div>
         </div>
       </nav>
@@ -69,6 +67,5 @@
 
     <%= yield %>
 
-      <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
