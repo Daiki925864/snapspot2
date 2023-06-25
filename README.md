@@ -1,42 +1,39 @@
+# アプリケーション名
+Snap Spot
+
+# アプリケーション概要
+画像と撮影場所を共有するためのアプリです。何気ない写真を共有し、他のユーザーとの交流を楽しむことができます。
+
+# URL
+http://
+
+# テスト用アカウント
+- Basic認証パスワード：
+- Basic認証ID：
+- メールアドレス：
+- パスワード：
+
+# 利用方法
+
+## 画像投稿
+1.トップページよりユーザー新規登録を行う
+2.新規投稿ボタンより画像と位置情報を入力し投稿する
+
+# アプリケーションを作成した背景
+
+# 洗い出した要件
+
+# 実装した機能についての画像やGIFおよびその説明
+
+# 実装予定の機能
+
 # テーブル設計
+[![Image from Gyazo](https://i.gyazo.com/827a704e46b32db6c0e530e58d5ecf44.png)](https://gyazo.com/827a704e46b32db6c0e530e58d5ecf44)
 
-## users テーブル
+# 画面遷移図
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
-| nickname           | string | null: false               |
+# 開発環境
 
-### Association
+# ローカルでの動作方法
 
-- has_many :posts
-- has_many :comments
-
-## posts テーブル
-
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| tittle           | string     | null: false                    |
-| content          | text       | null: false                    |
-| shooting_date    | date       | null: false                    |
-撮影位置情報のカラム
-| user             | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- has_many :comments
-
-## comments テーブル
-
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| content          | text       | null: false                    |
-| user             | references | null: false, foreign_key: true |
-| post             | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :post
+# 工夫したポイント
