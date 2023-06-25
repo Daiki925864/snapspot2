@@ -9,6 +9,9 @@ class Post < ApplicationRecord
   validates :shooting_date
   end
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   def self.search(search)
     if search != ""
       Post.where('title LIKE(?) OR content LIKE(?)', "%#{search}%", "%#{search}%")
