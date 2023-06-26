@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :new, :create, :search]
   
   def index
-    @posts = Post.all
+    @posts = Post.all.order("updated_at DESC")
   end
 
   def new
