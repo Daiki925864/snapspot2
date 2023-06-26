@@ -23,26 +23,33 @@
 
   <br>
 
-  <p class="h3 mt-5 mb-4 fw-normal">gmap</p>
+  <p class="h3 mt-5 mb-3 fw-normal">Encode Spot</p>
+  <small>Enter Address</small>
 
-  <div class="form-floating">
-    <%= form.text_field :address, id: 'address', class: "form-control", id: "floatingInput", placeholder: "Address" %>
-    <%= form.label :address, "Address", class: "form-label", for: "floatingInput" %>
-    <br>
-    <%= button_tag "Search", class: "btn btn-secondary", id: 'search-btn' %>
+  <div class="form-floating mt-1">
+    <div class="row">
+      <div class="col-11">
+        <input id="address" type="textbox" class="form-control">
+      </div>
+      <div class="col-1">
+        <input type="button" value="Encode" class="btn btn-sm btn-secondary" onclick="codeAddress()">
+      </div>
+    </div>
   </div>
 
   <br>
 
   <div id='map'></div>
 
+  <br>
+
   <div class="form-floating">
-    <%= form.text_field :latitude, class: "form-control", id: 'latitude' %>
+    <%= form.text_field :latitude, class: "form-control", id: 'latitude', readonly: true %>
     <%= form.label :latitude, class: "form-label", for: "floatingInput" %>
   </div>
 
   <div class="form-floating">
-    <%= form.text_field :longitude, class: "form-control", id: 'longitude' %>
+    <%= form.text_field :longitude, class: "form-control", id: 'longitude', readonly: true %>
     <%= form.label :longitude, class: "form-label", for: "floatingInput" %>
   </div>
 
@@ -50,52 +57,51 @@
 
   <style>
   #map{
-    height: 400px;
+    height: 470px;
   }
   </style>
 
 <script>
-function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 0, lng: 0 },
-    zoom: 4,
+let map
+let geocoder
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.7828, lng:-73.9653},
+    zoom: 12,
   });
 
-  const geocoder = new google.maps.Geocoder();
-  const marker = new google.maps.Marker({
-    map: map,
-    position: { lat: 0, lng: 0 },
-    draggable: true,
+  marker = new google.maps.Marker({
+    position:  {lat: 40.7828, lng:-73.9653},
+    map: map
   });
+}
 
-  google.maps.event.addListener(marker, "dragend", function (event) {
-    document.getElementById("latitude").value = marker.getPosition().lat();
-    document.getElementById("longitude").value = marker.getPosition().lng();
-  });
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
 
-  document.getElementById('search-btn').addEventListener('click', function () {
-    geocodeAddress(geocoder, map);
-  });
-
-  function geocodeAddress(geocoder, resultsMap) {
-    const address = document.getElementById('address').value;
-
-    geocoder.geocode({ 'address': address }, function (results, status) {
-      if (status === 'OK') {
-        resultsMap.setCenter(results[0].geometry.location);
-        marker.setPosition(results[0].geometry.location);
-        document.getElementById('latitude').value = results[0].geometry.location.lat();
-        document.getElementById('longitude').value = results[0].geometry.location.lng();
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      // 緯度経度情報を取得しフォームに自動入力
+      const latitude = results[0].geometry.location.lat();
+      const longitude = results[0].geometry.location.lng();
+      document.getElementById('latitude').value = latitude;
+      document.getElementById('longitude').value = longitude;
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });   
 }
 </script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 
   <br/>
-  <%= form.submit "投稿する", class: "btn btn-lg btn-primary" %>
+  <%= form.submit "投稿する", class: "btn btn-lg btn-success" %>
 <% end %>
