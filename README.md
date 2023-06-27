@@ -8,8 +8,8 @@ Snap Spot
 http://
 
 # テスト用アカウント
-- Basic認証パスワード：
-- Basic認証ID：
+- Basic認証ID：admin
+- Basic認証パスワード：2222
 - メールアドレス：
 - パスワード：
 
