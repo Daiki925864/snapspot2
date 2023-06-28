@@ -23,18 +23,11 @@
 
   <br>
 
-  <p class="h3 mt-5 mb-3 fw-normal">Encode Spot</p>
-  <small>Enter Address</small>
+  <p class="h3 mt-5 mb-4 fw-normal">Encode Spot</p>
 
-  <div class="form-floating mt-1">
-    <div class="row">
-      <div class="col-11">
-        <input id="address" type="textbox" class="form-control">
-      </div>
-      <div class="col-1">
-        <input type="button" value="Encode" class="btn btn-sm btn-secondary" onclick="codeAddress()">
-      </div>
-    </div>
+  <div class="input-group">
+    <input id="address" type="text" class="form-control" placeholder="Enter Address" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="codeAddress()">Encode</button>
   </div>
 
   <br>
@@ -43,16 +36,18 @@
 
   <br>
 
+  <input type="button" value="Drop Pin in Center of Map" class="btn btn btn-secondary mb-4" id="drop_pin">
+
+<div class="input-group mb-3">
   <div class="form-floating">
     <%= form.text_field :latitude, class: "form-control", id: 'latitude', readonly: true %>
     <%= form.label :latitude, class: "form-label", for: "floatingInput" %>
   </div>
-
   <div class="form-floating">
     <%= form.text_field :longitude, class: "form-control", id: 'longitude', readonly: true %>
     <%= form.label :longitude, class: "form-label", for: "floatingInput" %>
   </div>
-
+</div>
 
 
   <style>
@@ -62,46 +57,75 @@
   </style>
 
 <script>
-let map
-let geocoder
+let map;
+let geocoder;
+let marker;
 
-function initMap(){
-  geocoder = new google.maps.Geocoder()
+function initMap() {
+  geocoder = new google.maps.Geocoder();
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 40.7828, lng:-73.9653},
+    center: { lat: 35.685175, lng: 139.7527995 },
     zoom: 13,
   });
 
-  marker = new google.maps.Marker({
-    position:  {lat: 40.7828, lng:-73.9653},
-    map: map
-  });
+  // drop_pinボタンのクリックイベントを追加
+  document.getElementById('drop_pin').addEventListener('click', dropPin);
 }
 
-function codeAddress(){
+function codeAddress() {
   let inputAddress = document.getElementById('address').value;
 
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+  geocoder.geocode({ 'address': inputAddress }, function (results, status) {
     if (status == 'OK') {
       map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
+
       // 緯度経度情報を取得しフォームに自動入力
       const latitude = results[0].geometry.location.lat();
       const longitude = results[0].geometry.location.lng();
       document.getElementById('latitude').value = latitude;
       document.getElementById('longitude').value = longitude;
+
+      // 既存のマーカーを削除
+      if (marker) {
+        marker.setMap(null);
+      }
+
+      // 新しいマーカーを作成
+      marker = new google.maps.Marker({
+        position: results[0].geometry.location,
+        map: map
+      });
     } else {
       alert('該当する結果がありませんでした：' + status);
     }
-  });   
+  });
+}
+
+function dropPin() {
+  const center = map.getCenter();
+  const lat = center.lat();
+  const lng = center.lng();
+
+  // 既存のマーカーを削除
+  if (marker) {
+    marker.setMap(null);
+  }
+
+  // 新しいマーカーを作成
+  marker = new google.maps.Marker({
+    position: { lat: lat, lng: lng },
+    map: map
+  });
+
+  // 緯度経度情報を更新
+  document.getElementById('latitude').value = lat;
+  document.getElementById('longitude').value = lng;
 }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 
   <br/>
-  <%= form.submit "投稿する", class: "btn btn-lg btn-success" %>
+  <%= form.submit "投稿する", class: "btn btn-lg btn-success mt-3 mb-3" %>
 <% end %>
