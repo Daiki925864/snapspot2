@@ -5,13 +5,13 @@ Snap Spot
 画像と撮影場所を共有するためのアプリです。何気ない写真を共有し、他のユーザーとの交流を楽しむことができます。
 
 # URL
-http://
+https://snapspot2.onrender.com
 
 # テスト用アカウント
 - Basic認証ID：admin
 - Basic認証パスワード：2222
-- メールアドレス：
-- パスワード：
+- メールアドレス：taro@yahoo.co.jp
+- パスワード：taro11
 
 # 利用方法
 
@@ -22,6 +22,7 @@ http://
 # アプリケーションを作成した背景
 
 # 洗い出した要件
+https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4S_U/edit#gid=335129358
 
 # 実装した機能についての画像やGIFおよびその説明
 ## トップページ
