@@ -26,7 +26,13 @@
         }
       }
     </style>
+    </head>
 
-  <%= render partial: "form", locals: { post: @post } %>
+  <body class="text-center">
+    <main class="container-sm">
+      <h1 class="h1 mb-3 fw-normal">Edit Spot</h1>
+      <%= render partial: "form", locals: { post: @post } %>
+    </main>
+  </body>
 
 </html>
