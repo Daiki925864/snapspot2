@@ -53,10 +53,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+group :production do
+  gem 'pg'
+end
+
 gem 'devise'
 gem 'pry-rails'
+
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+
 gem 'geocoder'
 gem 'momentjs-rails'
+
 gem 'bootstrap3-datetimepicker-rails'
