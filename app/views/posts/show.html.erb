@@ -122,8 +122,17 @@
                     <div class=>
                       <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
                     </div>
-                    <div>
-                      <%= comment.comment %>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <%= comment.comment %>
+                      </div>
+                      <div>
+                        <% if user_signed_in? && current_user.id == comment.user_id %>
+                          <%= link_to post_comment_path(@post, comment), method: :delete do %>
+                            <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                          <% end %>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -189,13 +198,13 @@ function initMap(){
 
 <!-- Edit/Deleteボタン -->
 
-    <div class>
+    <div class="text-center">
       <% if user_signed_in? && current_user.id == @post.user_id %>
         <%= link_to edit_post_path(@post.id),data: {"turbolinks" => false} do %>
           <button type="button" class="btn btn-secondary btn-lg">Edit</button>
         <% end %>
         <%= link_to post_path(@post.id), method: :delete do %>
-          <button type="button" class="btn btn-lg btn-outline-secondary">Delete</button>
+          <button type="button" class="btn btn-lg btn-danger">Delete</button>
         <% end %>
       <% end %>
     </div>
