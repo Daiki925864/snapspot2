@@ -1,6 +1,7 @@
 <%= form_with model: @post, local: true do |form|%>
   <br>
 
+  <!-- 投稿詳細入力フォーム -->
   <div class="form-floating">
     <%= form.text_field :title, class: "form-control", id: "floatingInput", placeholder: "Title" %>
     <%= form.label :title, "Title", class: "form-label", for: "floatingInput" %>
@@ -18,16 +19,20 @@
 
   <div class="form-floating">
     <%= form.date_field :shooting_date, class: "form-control", id: "floatingInput", placeholder: "撮影日" %>
-    <%= form.label :shooting_date, "撮影日", class: "form-label", for: "floatingInput" %>
+    <%= form.label :shooting_date, "Shooting Date", class: "form-label", for: "floatingInput" %>
   </div>
+
+  <!-- /投稿詳細入力フォーム -->
 
   <br>
 
-  <p class="h3 mt-5 mb-4 fw-normal">Encode Spot</p>
+  <!-- 位置情報入力フォーム -->
+
+  <p class="h3 mt-5 mb-4 fw-normal">Registration of Spot</p>
 
   <div class="input-group">
-    <input id="address" type="text" class="form-control" placeholder="Enter Address" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="codeAddress()">Encode</button>
+    <input id="address" type="text" class="form-control" placeholder="Enter Spot Address" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="codeAddress()">Seaech</button>
   </div>
 
   <br>
@@ -36,19 +41,26 @@
 
   <br>
 
-  <input type="button" value="Drop Pin in Center of Map" class="btn btn btn-secondary mb-4" id="drop_pin">
+  <input type="button" value="Drop a Pin in the Center of the Map" class="btn btn btn-secondary mb-4" id="drop_pin">
 
-<div class="input-group mb-3">
-  <div class="form-floating">
-    <%= form.text_field :latitude, class: "form-control", id: 'latitude', readonly: true %>
-    <%= form.label :latitude, class: "form-label", for: "floatingInput" %>
+  <div class="input-group mb-3">
+    <div class="form-floating">
+      <%= form.text_field :latitude, class: "form-control", id: 'latitude', readonly: true %>
+      <%= form.label :latitude, class: "form-label", for: "floatingInput" %>
+    </div>
+    <div class="form-floating">
+      <%= form.text_field :longitude, class: "form-control", id: 'longitude', readonly: true %>
+      <%= form.label :longitude, class: "form-label", for: "floatingInput" %>
+    </div>
   </div>
-  <div class="form-floating">
-    <%= form.text_field :longitude, class: "form-control", id: 'longitude', readonly: true %>
-    <%= form.label :longitude, class: "form-label", for: "floatingInput" %>
-  </div>
-</div>
 
+  <br/>
+  <%= form.submit "投稿する", class: "btn btn-lg btn-success mt-3 mb-3" %>
+<% end %>
+
+  <!-- /位置情報入力フォーム -->
+
+  <!-- Googlemapスクリプト -->
 
   <style>
   #map{
@@ -126,6 +138,4 @@ function dropPin() {
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 
-  <br/>
-  <%= form.submit "投稿する", class: "btn btn-lg btn-success mt-3 mb-3" %>
-<% end %>
+<!-- /Googlemapスクリプト -->
