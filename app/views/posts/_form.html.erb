@@ -1,4 +1,4 @@
-<%= form_with model: @post, local: true do |form|%>
+<%= form_with model: @post, id: 'new_spot', local: true do |form|%>
   <br>
 
   <%# エラーメッセージ  %>
@@ -16,9 +16,14 @@
     <%= form.label :content, "Content", class: "form-label", for: "floatingInput" %>
   </div>
 
-  <div class="form-floating">
-    <%= form.file_field :image, class: "form-control", id:"exampleFormControlFile1" %>
-    <%= form.label :image, "Image", class: "form-label", for: "floatingInput" %>
+  <div class="image-field">
+    <div class="container-sm">
+      <div id="previews"></div>
+    </div>
+    <div class="form-floating">
+      <%= form.file_field :image, class: "form-control", id:"exampleFormControlFile1" %>
+      <%= form.label :image, "Image", class: "form-label", for: "floatingInput" %>
+    </div>
   </div>
 
   <div class="form-floating">
