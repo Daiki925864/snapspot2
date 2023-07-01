@@ -11,4 +11,8 @@ class PostForm
     validates :content
     validates :shooting_date
   end
+
+  def save
+    Post.create(title: title, content: content, shooting_date: shooting_date, address: address, latitude: latitude, longitude: longitude)
+  end
 end
