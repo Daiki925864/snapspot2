@@ -20,6 +20,8 @@ https://snapspot2.onrender.com
 2. 新規投稿ボタンより画像と位置情報を入力し投稿する
 
 ## コメント投稿
+1. トップページよりユーザー新規登録を行う ※投稿者はコメントできないので他のアカウントでログインする
+2. 投稿詳細ページよりコメントを入力し投稿する
 
 # アプリケーションを作成した背景
 
@@ -30,6 +32,11 @@ https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4
 # 実装した機能についての画像やGIFおよびその説明
 ## トップページ
 [![Image from Gyazo](https://i.gyazo.com/117c36fecd86cdcbd82c31b3da5d3b97.png)](https://gyazo.com/117c36fecd86cdcbd82c31b3da5d3b97)
+
+## 位置情報登録機能
+[![Image from Gyazo](https://i.gyazo.com/9660a25617608efac0e28ae6e37b2843.gif)](https://gyazo.com/9660a25617608efac0e28ae6e37b2843)
+地図中央にマーカーを落としその場所の緯度経度を取得する機能を実装した。
+住所検索に該当しない場所も登録できる。
 # 実装予定の機能
 
 # テーブル設計
@@ -39,8 +46,7 @@ https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4
 [![Image from Gyazo](https://i.gyazo.com/b10e2a60fbfbe392260e2746a009d977.png)](https://gyazo.com/b10e2a60fbfbe392260e2746a009d977)
 
 # 開発環境
-- フロントエンド
-HTML CSS Bootstrap
+- フロントエンド HTML CSS Bootstrap
 - バックエンド ruby Ruby on Rails
 - インフラ 
 - テスト RSpec
@@ -55,3 +61,9 @@ HTML CSS Bootstrap
 4. % yarn install
 
 # 工夫したポイント
+## 位置情報の登録
+まず、住所検索により緯度経度情報を取得し登録する機能を実装した。
+しかし住所検索に該当しない場所を登録できないことに気づいた。
+そこで上の機能に加え、地図中央にマーカーを落としその場所の緯度経度を取得する機能を追加した。
+
+[![Image from Gyazo](https://i.gyazo.com/9660a25617608efac0e28ae6e37b2843.gif)](https://gyazo.com/9660a25617608efac0e28ae6e37b2843)

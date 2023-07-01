@@ -25,10 +25,11 @@
       }
     </style>
 
-<!-- 投稿メイン -->
-
 <body>
   <main class="px-3">
+
+<!-- 投稿メイン -->
+
     <div class="container text-center">
       <div class="row">
         <div class="col-12 mt-4">
@@ -66,6 +67,40 @@
         </div>
       </div>
     </div>
+
+    <br>
+
+<!-- Edit/Deleteボタン -->
+
+    <div class="text-center">
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <%= link_to edit_post_path(@post.id),data: {"turbolinks" => false} do %>
+          <button type="button" class="btn btn-secondary btn-lg">Edit</button>
+        <% end %>
+        <%= link_to post_path(@post.id), method: :delete do %>
+          <button type="button" class="btn btn-lg btn-danger">Delete</button>
+        <% end %>
+      <% end %>
+    </div>
+
+<!-- /Edit/Deleteボタン -->
+
+<!-- PREV/NEXTボタン -->
+
+    <div class="container d-flex justify-content-between mt-5">
+      <div class>
+        <% if @post.previous.present? %>
+          <%= link_to "<PREV", post_path(@post.previous), class: "btn btn-outline-secondary btn-sm mt-3"%>
+        <% end %>
+      </div>
+      <div class>
+        <% if @post.next.present? %>
+          <%= link_to "NEXT>", post_path(@post.next), class: "btn btn-outline-secondary btn-sm mt-3"%>
+        <% end %>
+      </div>
+    </div>
+
+<!-- /PREV/NEXTボタン -->
 
 <!-- /投稿メイン -->
 
@@ -196,22 +231,10 @@ function initMap(){
 
 <!-- /Googlemapスクリプト -->
 
-<!-- Edit/Deleteボタン -->
-
-    <div class="text-center">
-      <% if user_signed_in? && current_user.id == @post.user_id %>
-        <%= link_to edit_post_path(@post.id),data: {"turbolinks" => false} do %>
-          <button type="button" class="btn btn-secondary btn-lg">Edit</button>
-        <% end %>
-        <%= link_to post_path(@post.id), method: :delete do %>
-          <button type="button" class="btn btn-lg btn-danger">Delete</button>
-        <% end %>
-      <% end %>
-    </div>
   </main>
 </body>
 
-<!-- /Edit/Deleteボタン -->
+
 
 <footer class="text-muted py-5">
   <div class="container">
