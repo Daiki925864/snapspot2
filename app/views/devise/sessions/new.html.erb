@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,12 +33,20 @@
 <main class="form-signin">
   <h2 class="page-heading">Login</h2>
   <br>
+
+  <%# ログイン時のエラーメッセージ  %>
+  <div class='login-flash-message text-danger'>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+  </div>
+  <br>
+
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
     <div class="form-floating">
       <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email", class: "form-control" %>
       <%= f.label :email, "e-mail", class: "form-label" %>
-
+    </div>
     <div class="form-floating">
       <%= f.password_field :password, id:"user_password", autocomplete: "new-password", class: "form-control" %>
       <%= f.label :password, "Password（minimum 6）", class: "form-label" %>
