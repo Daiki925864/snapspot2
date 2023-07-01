@@ -1,6 +1,10 @@
 <%= form_with model: @post, local: true do |form|%>
   <br>
 
+  <%# エラーメッセージ  %>
+  <%= render 'layouts/error_messages', model: form.object %>
+  <br>
+
   <!-- 投稿詳細入力フォーム -->
   <div class="form-floating">
     <%= form.text_field :title, class: "form-control", id: "floatingInput", placeholder: "Title" %>

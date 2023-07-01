@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      post:
+        image: 画像
+        title: タイトル
+        content: 詳細
+        shooting_date: 撮影日

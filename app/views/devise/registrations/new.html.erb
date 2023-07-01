@@ -32,9 +32,13 @@
   <body class="text-center">
     
 <main class="form-signin">
+  <h2 class="page-heading">Sign up</h2>
+  <br>
 
-  <h1 class="h3 mb-4 fw-normal">Please sign up</h1>
+  <%# ログイン時のエラーメッセージ  %>
+
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
     <div class="form-floating mb-2">
       <%= f.text_field :nickname, id:"user_name", class: "form-control" %>
       <%= f.label :nickname, "Nickname", class: "form-label" %>

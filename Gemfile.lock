@@ -123,7 +123,6 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.2)
     minitest (5.18.1)
     momentjs-rails (2.29.4.1)
       railties (>= 3.1)
@@ -139,9 +138,6 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.2)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -180,6 +176,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.7)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (6.0.6.1)
       actionpack (= 6.0.6.1)
       activesupport (= 6.0.6.1)
@@ -276,7 +275,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
@@ -297,6 +295,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 6.0.0)
+  rails-i18n
   rspec-rails (~> 4.0.0)
   sass-rails (~> 5)
   selenium-webdriver
