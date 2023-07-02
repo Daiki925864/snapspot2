@@ -31,7 +31,7 @@
   <body class="text-center">
     <main class="container-sm">
       <h1 class="h1 mb-3 fw-normal">Edit Spot</h1>
-      <%= render partial: "form", locals: { post: @post } %>
+      <%= render partial: "form", locals: { url: post_path(@post.id), method: :patch } %>
     </main>
   </body>
 

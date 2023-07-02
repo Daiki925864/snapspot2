@@ -27,11 +27,20 @@ class PostsController < ApplicationController
   end
 
   def edit
+    # @postから情報をハッシュとして取り出し、@post_formとしてインスタンス生成する
+    post_attributes = @post.attributes
+    @post_form = PostForm.new(post_attributes)
   end
 
   def update
-    @post.update(post_params)
-    if @post.save
+    # paramsの内容を反映したインスタンスを生成する
+    @post_form = PostForm.new(post_form_params)
+
+    # 画像を選択し直していない場合は、既存の画像をセットする
+    @post_form.image ||= @post.image.blob
+
+    if @post_form.valid?
+      @post_form.update(post_form_params, @post)
       redirect_to post_path(@post.id)
     else
       render :edit
