@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destroy]
   
   def index
-    @posts = Post.all.order("created_at DESC")
+    if params[:tag_id].present?
+      @posts = Tag.find(params[:tag_id]).posts.order("created_at DESC")
+    else
+      @posts = Post.all.order("created_at DESC")
+    end
   end
 
   def new
@@ -61,6 +65,10 @@ class PostsController < ApplicationController
     return nil if params[:keyword] == ""
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
+  end
+
+  def tags_index
+    @tags = Tag.all.order("tag_name ASC")
   end
 
   private

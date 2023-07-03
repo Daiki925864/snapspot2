@@ -50,7 +50,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Category</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Tag</a>
+                <%= link_to "Tag",  tags_index_posts_path, class: "nav-link active" %>
               </li>
             </ul>
             <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
