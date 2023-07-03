@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_post, only: [:edit, :show, :update, :destroy]
-  before_action :move_to_index, except: [:index, :show, :new, :create, :search]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   
   def index
     @posts = Post.all.order("created_at DESC")
