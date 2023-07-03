@@ -1,14 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :post_tag_relations
+  has_many :tags, through: :post_tag_relations
   has_one_attached :image
-
-  with_options presence: true do
-  validates :image
-  validates :title
-  validates :content
-  validates :shooting_date
-  end
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

@@ -1,4 +1,4 @@
-<%= form_with model: @post, id: 'new_spot', local: true do |form|%>
+<%= form_with model: @post_form, url: url, method: method, id: 'new_spot', local: true do |form|%>
   <br>
 
   <%# エラーメッセージ  %>
@@ -31,6 +31,12 @@
     <%= form.label :shooting_date, "Shooting Date", class: "form-label", for: "floatingInput" %>
   </div>
 
+  <div class="form-floating">
+    <%= form.text_field :tag_name, class: "form-control", id: "tag_name_floatingInput", placeholder: 'Add Tags' %>
+    <%= form.label :tag_name, "Add Tags", class: "form-label", for: "floatingInput" %>
+  </div>
+  <ul class="list-group" id="search-result"></ul>
+
   <!-- /投稿詳細入力フォーム -->
 
   <br>
@@ -41,7 +47,7 @@
 
   <div class="input-group">
     <input id="address" type="text" class="form-control" placeholder="Enter Spot Address" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="codeAddress()">Seaech</button>
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="codeAddress()">Search</button>
   </div>
 
   <br>
