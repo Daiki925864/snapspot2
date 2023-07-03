@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     # @postから情報をハッシュとして取り出し、@post_formとしてインスタンス生成する
     post_attributes = @post.attributes
     @post_form = PostForm.new(post_attributes)
+    @post_form.tag_name = @post.tags.first&.tag_name
   end
 
   def update
