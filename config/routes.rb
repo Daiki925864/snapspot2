@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       get 'search'
+      get 'search_tag'
     end
     resources :comments, only: [:create, :destroy]
   end
