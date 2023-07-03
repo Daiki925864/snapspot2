@@ -5,7 +5,9 @@ class PostForm
   attr_accessor(
     :title, :content, :shooting_date,
     :address, :latitude, :longitude, :image,
-    :id, :created_at, :updated_at, :user_id )
+    :id, :created_at, :updated_at, :user_id,
+    :tag_name
+  )
 
   with_options presence: true do
     validates :image
