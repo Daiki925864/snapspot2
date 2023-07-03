@@ -17,7 +17,12 @@ class PostForm
   end
 
   def save
-    Post.create(title: title, content: content, shooting_date: shooting_date, address: address, latitude: latitude, longitude: longitude, image: image, user_id: user_id)
+    post = Post.create(title: title, content: content, shooting_date: shooting_date, address: address, latitude: latitude, longitude: longitude, image: image, user_id: user_id)
+    if tag_name.present?
+      tag = Tag.where(tag_name: tag_name).first_or_initialize
+      tag.save
+      PostTagRelation.create(post_id: post.id, tag_id: tag.id)
+    end
   end
 
   def update(params, post)
