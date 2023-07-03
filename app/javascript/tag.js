@@ -14,8 +14,8 @@ const tagNameInput = document.querySelector("#tag_name_floatingInput");
         if (XHR.response) {
           const tagName = XHR.response.keyword;
           tagName.forEach((tag) => {
-            const childElement = document.createElement("div");
-            childElement.setAttribute("class", "child");
+            const childElement = document.createElement("li");
+            childElement.setAttribute("class", "list-group-item");
             childElement.setAttribute("id", tag.id);
             childElement.innerHTML = tag.tag_name;
             searchResult.appendChild(childElement);
