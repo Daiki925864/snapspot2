@@ -44,6 +44,7 @@
   <!-- 位置情報入力フォーム -->
 
   <p class="h3 mt-5 mb-4 fw-normal">Registration of Spot</p>
+  <p class="">マーカーをドラック＆ドロップで位置の調整ができます。<p>
 
   <div class="input-group">
     <input id="address" type="text" class="form-control" placeholder="Enter Spot Address" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -55,8 +56,6 @@
   <div id='map'></div>
 
   <br>
-
-  <input type="button" value="Drop a Pin in the Center of the Map" class="btn btn btn-secondary mb-4" id="drop_pin">
 
   <div class="input-group mb-3">
     <div class="form-floating">
@@ -84,71 +83,58 @@
   </style>
 
 <script>
-let map;
-let geocoder;
-let marker;
-
-function initMap() {
-  geocoder = new google.maps.Geocoder();
+//初期マップの設定
+let map
+let marker
+function initMap(){
+  geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 35.685175, lng: 139.7527995 },
-    zoom: 13,
+    center:  {lat: 35.6803997, lng:139.7690174},  //東京
+    zoom: 15,
+    
   });
-
-  // drop_pinボタンのクリックイベントを追加
-  document.getElementById('drop_pin').addEventListener('click', dropPin);
 }
 
-function codeAddress() {
+//検索後のマップ作成
+let geocoder
+let aft
+function codeAddress(){
   let inputAddress = document.getElementById('address').value;
-
-  geocoder.geocode({ 'address': inputAddress }, function (results, status) {
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
     if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
+        //マーカーが複数できないようにする
+        if (aft == true){
+            marker.setMap(null);
+        }
 
-      // 緯度経度情報を取得しフォームに自動入力
-      const latitude = results[0].geometry.location.lat();
-      const longitude = results[0].geometry.location.lng();
-      document.getElementById('latitude').value = latitude;
-      document.getElementById('longitude').value = longitude;
+        //新しくマーカーを作成する
+        map.setCenter(results[0].geometry.location);
+            marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            draggable: true	// ドラッグ可能にする
+        });
 
-      // 既存のマーカーを削除
-      if (marker) {
-        marker.setMap(null);
-      }
+        //二度目以降か判断
+        aft = true
 
-      // 新しいマーカーを作成
-      marker = new google.maps.Marker({
-        position: results[0].geometry.location,
-        map: map
-      });
+        //検索した時に緯度経度を入力する
+        document.getElementById('latitude').value = results[0].geometry.location.lat();
+        document.getElementById('longitude').value = results[0].geometry.location.lng();
+
+        // マーカーのドロップ（ドラッグ終了）時のイベント
+        google.maps.event.addListener( marker, 'dragend', function(ev){
+            // イベントの引数evの、プロパティ.latLngが緯度経度
+            document.getElementById('latitude').value = ev.latLng.lat();
+            document.getElementById('longitude').value = ev.latLng.lng();
+        });
     } else {
       alert('該当する結果がありませんでした：' + status);
     }
-  });
+  });   
 }
 
-function dropPin() {
-  const center = map.getCenter();
-  const lat = center.lat();
-  const lng = center.lng();
-
-  // 既存のマーカーを削除
-  if (marker) {
-    marker.setMap(null);
-  }
-
-  // 新しいマーカーを作成
-  marker = new google.maps.Marker({
-    position: { lat: lat, lng: lng },
-    map: map
-  });
-
-  // 緯度経度情報を更新
-  document.getElementById('latitude').value = lat;
-  document.getElementById('longitude').value = lng;
-}
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

@@ -31,16 +31,16 @@ https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4
 
 # 実装した機能についての画像やGIFおよびその説明
 ## トップページ
-[![Image from Gyazo](https://i.gyazo.com/117c36fecd86cdcbd82c31b3da5d3b97.png)](https://gyazo.com/117c36fecd86cdcbd82c31b3da5d3b97)
+[![Image from Gyazo](https://i.gyazo.com/18b655b92f79b9384aa718260006d8b8.png)](https://gyazo.com/18b655b92f79b9384aa718260006d8b8)
 
 ## 位置情報登録機能
-[![Image from Gyazo](https://i.gyazo.com/9660a25617608efac0e28ae6e37b2843.gif)](https://gyazo.com/9660a25617608efac0e28ae6e37b2843)
-地図中央にマーカーを落としその場所の緯度経度を取得する機能を実装した。
-住所検索に該当しない場所も登録できる。
+[![Image from Gyazo](https://i.gyazo.com/3e046d2b6e68f3d61869603da4d5d2c5.gif)](https://gyazo.com/3e046d2b6e68f3d61869603da4d5d2c5)
+住所検索に該当しない場所も登録できるようにするために、
+マーカーの位置をドラッグ&ドロップで調整できるようにした。
 # 実装予定の機能
 
 # テーブル設計
-[![Image from Gyazo](https://i.gyazo.com/827a704e46b32db6c0e530e58d5ecf44.png)](https://gyazo.com/827a704e46b32db6c0e530e58d5ecf44)
+[![Image from Gyazo](https://i.gyazo.com/73d4cba53597b3b1d8a37b7d63eaceef.png)](https://gyazo.com/73d4cba53597b3b1d8a37b7d63eaceef)
 
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/b10e2a60fbfbe392260e2746a009d977.png)](https://gyazo.com/b10e2a60fbfbe392260e2746a009d977)
@@ -64,6 +64,6 @@ https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4
 ## 位置情報の登録
 まず、住所検索により緯度経度情報を取得し登録する機能を実装した。
 しかし住所検索に該当しない場所を登録できないことに気づいた。
-そこで上の機能に加え、地図中央にマーカーを落としその場所の緯度経度を取得する機能を追加した。
+そこで上の機能に加え、マーカーの位置をドラッグ&ドロップで調整できるようにし、その場所の緯度経度を取得する機能を追加した。
 
-[![Image from Gyazo](https://i.gyazo.com/9660a25617608efac0e28ae6e37b2843.gif)](https://gyazo.com/9660a25617608efac0e28ae6e37b2843)
+[![Image from Gyazo](https://i.gyazo.com/3e046d2b6e68f3d61869603da4d5d2c5.gif)](https://gyazo.com/3e046d2b6e68f3d61869603da4d5d2c5)
