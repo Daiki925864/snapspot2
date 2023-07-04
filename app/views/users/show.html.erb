@@ -1,0 +1,13 @@
+<main>
+  <div class="container-sm w-75 p-3 text-center">
+    <p class="h2 mb-3 fw-normal"><%= "#{@user.nickname}さんの投稿"%></p>
+  </div>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <%= render partial: "posts/post", locals: { collection: @post } %>
+      </div>
+    </div>
+  </div>
+</main>

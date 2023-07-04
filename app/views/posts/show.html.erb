@@ -27,7 +27,7 @@
       <div class="mx-2">　</div>
       <div class>
         <p class="fs-5 fw-bold">投稿者</p>
-        <p class="fs-6 fw-light"><%= @post.user.nickname %></p>
+        <p class="fs-6 fw-light"><%= link_to "#{@post.user.nickname}", user_path(@post.user) %></p>
       </div>
     </div>
   </div>
@@ -54,7 +54,7 @@
 
   <div class="text-center">
     <% if user_signed_in? && current_user.id == @post.user_id %>
-      <%= link_to edit_post_path(@post.id),data: {"turbolinks" => false} do %>
+      <%= link_to edit_post_path(@post.id) do %>
         <button type="button" class="btn btn-secondary btn-lg">Edit</button>
       <% end %>
       <%= link_to post_path(@post.id), method: :delete do %>
@@ -70,12 +70,12 @@
   <div class="container d-flex justify-content-between mt-5">
     <div class>
       <% if @post.previous.present? %>
-        <%= link_to "<PREV", post_path(@post.previous), class: "btn btn-outline-secondary btn-sm mt-3"%>
+        <%= link_to "< PREV", post_path(@post.previous), class: "btn btn-outline-secondary btn-sm mt-3"%>
       <% end %>
     </div>
     <div class>
       <% if @post.next.present? %>
-        <%= link_to "NEXT>", post_path(@post.next), class: "btn btn-outline-secondary btn-sm mt-3"%>
+        <%= link_to "NEXT >", post_path(@post.next), class: "btn btn-outline-secondary btn-sm mt-3"%>
       <% end %>
     </div>
   </div>
@@ -132,7 +132,7 @@
                   <li class="list-group-item">
                     <div class="container-sm text-left">
                       <div class="fw-bold">
-                        <%= comment.user.nickname %>
+                        <%= link_to "#{comment.user.nickname}", user_path(comment.user) %>
                       </div>
                       <div class=>
                         <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
