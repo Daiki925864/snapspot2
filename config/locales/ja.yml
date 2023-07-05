@@ -3,8 +3,10 @@ ja:
     attributes:
       user:
         nickname: ニックネーム
-      post:
-        image: 画像
-        title: タイトル
-        content: 詳細
-        shooting_date: 撮影日
+  activemodel:
+      attributes:
+        post_form:
+          image: 画像
+          title: タイトル
+          content: 詳細
+          shooting_date: 撮影日
