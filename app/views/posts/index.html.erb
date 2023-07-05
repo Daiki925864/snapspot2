@@ -1,26 +1,6 @@
 <main>
-
   <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Welcome to SnapSpot</h1>
-        <% if user_signed_in? %>
-          <p class="lead text-muted">
-            <span class="linl-dark">
-              Hello <%= link_to "#{current_user.nickname}", user_path(current_user) %>
-            </span>
-          </p>
-        <% end %>
-        <p class="lead text-muted">
-        SnapSpotは、画像と撮影場所を共有するためのアプリです。何気ない写真を共有し、他のユーザーとの交流を楽しむことができます。</p>
-        <p>
-          <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
-            <%= f.text_field :keyword, placeholder: "撮影スポットを探す", class: "form-control me-2" %>
-            <%= f.submit "Search", class: "btn btn-secondary" %>
-          <% end %>
-        </p>
-      </div>
-    </div>
+    <%= render partial: "welcome" %>
     <div class="fs-5 mt-3">
       <% if params[:tag_id].present? %>
         <% tag = Tag.find_by(id: params[:tag_id]) %>
@@ -38,5 +18,4 @@
       </div>
     </div>
   </div>
-
 </main>
