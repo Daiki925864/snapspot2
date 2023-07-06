@@ -9,7 +9,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-fixed/">
+    <!-- コード追加 Font Awesome読み込みコード -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
+    <%= favicon_link_tag('favicon.ico') %>
     <meta name="viewport" content="width=device-width">
 
     <style>
@@ -38,7 +41,10 @@
 
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">SnapSpot</a>
+          <div class="navbar-brand">
+            <%= link_to image_tag("logo.png", style: "height:30px"), root_path %>
+            <a class="navbar-brand" href="/">SnapSpot</a>
+          </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -48,7 +54,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Most Viewed</a>
               </li>
               <li class="nav-item">
-                <%= link_to "Search by Tag", tags_index_posts_path, class: "nav-link active" %>
+                <%= link_to "Tag List", tags_index_posts_path, class: "nav-link active" %>
               </li>
             </ul>
             <% if user_signed_in? %>

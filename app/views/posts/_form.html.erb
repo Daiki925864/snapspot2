@@ -8,12 +8,12 @@
   <!-- 投稿詳細入力フォーム -->
   <div class="form-floating">
     <%= form.text_field :title, class: "form-control", id: "floatingInput", placeholder: "Title" %>
-    <%= form.label :title, "Title", class: "form-label", for: "floatingInput" %>
+    <%= form.label :title, "タイトル", class: "form-label", for: "floatingInput" %>
   </div>
 
   <div class="form-floating">
     <%= form.text_area :content, class: "form-control", id: "floatingInput", placeholder: "Content", rows:"3" %>
-    <%= form.label :content, "Content", class: "form-label", for: "floatingInput" %>
+    <%= form.label :content, "投稿内容", class: "form-label", for: "floatingInput" %>
   </div>
 
   <div class="image-field">
@@ -22,18 +22,18 @@
     </div>
     <div class="form-floating">
       <%= form.file_field :image, class: "form-control", id:"exampleFormControlFile1" %>
-      <%= form.label :image, "Image", class: "form-label", for: "floatingInput" %>
+      <%= form.label :image, class: "form-label", for: "floatingInput" %>
     </div>
   </div>
 
   <div class="form-floating">
     <%= form.date_field :shooting_date, class: "form-control", id: "floatingInput", placeholder: "撮影日" %>
-    <%= form.label :shooting_date, "Shooting Date", class: "form-label", for: "floatingInput" %>
+    <%= form.label :shooting_date, "撮影日", class: "form-label", for: "floatingInput" %>
   </div>
 
   <div class="form-floating">
     <%= form.text_field :tag_name, class: "form-control", id: "tag_name_floatingInput", placeholder: 'Add Tags' %>
-    <%= form.label :tag_name, "Add Tags", class: "form-label", for: "floatingInput" %>
+    <%= form.label :tag_name, "#タグ", class: "form-label", for: "floatingInput" %>
   </div>
   <ul class="list-group" id="search-result"></ul>
 
@@ -47,7 +47,7 @@
   <p class="">マーカーをドラック＆ドロップで位置の調整ができます。<p>
 
   <div class="input-group">
-    <input id="address" type="text" class="form-control" placeholder="Enter Spot Address" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input id="address" type="text" class="form-control" placeholder="Search Spot Address" aria-label="Recipient's username" aria-describedby="button-addon2">
     <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="codeAddress()">Search</button>
   </div>
 
@@ -60,11 +60,11 @@
   <div class="input-group mb-3">
     <div class="form-floating">
       <%= form.text_field :latitude, class: "form-control", id: 'latitude', readonly: true %>
-      <%= form.label :latitude, class: "form-label", for: "floatingInput" %>
+      <%= form.label :latitude, "緯度", class: "form-label", for: "floatingInput" %>
     </div>
     <div class="form-floating">
       <%= form.text_field :longitude, class: "form-control", id: 'longitude', readonly: true %>
-      <%= form.label :longitude, class: "form-label", for: "floatingInput" %>
+      <%= form.label :longitude, "経度", class: "form-label", for: "floatingInput" %>
     </div>
   </div>
 

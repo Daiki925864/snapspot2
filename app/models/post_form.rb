@@ -14,6 +14,8 @@ class PostForm
     validates :title
     validates :content
     validates :shooting_date
+    validates :latitude
+    validates :longitude
   end
 
   def save
