@@ -74,3 +74,5 @@ gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 
 gem 'rails-i18n'
+
+gem 'kaminari'

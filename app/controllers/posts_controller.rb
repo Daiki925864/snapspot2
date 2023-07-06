@@ -5,9 +5,9 @@ class PostsController < ApplicationController
   
   def index
     if params[:tag_id].present?
-      @posts = Tag.find(params[:tag_id]).posts.order("created_at DESC")
+      @posts = Tag.find(params[:tag_id]).posts.order("created_at DESC").page(params[:page]).per(6)
     else
-      @posts = Post.all.order("created_at DESC")
+      @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
     end
   end
 
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword])
+    @posts = Post.search(params[:keyword]).page(params[:page]).per(6)
   end
 
   def search_tag

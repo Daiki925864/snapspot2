@@ -45,4 +45,7 @@
   </section>
 
   <%= render partial: "post", locals: { collection: @post } %>
+  <div class="d-flex justify-content-center mt-3">
+    <%= paginate @posts %>
+  </div>
 </main>
