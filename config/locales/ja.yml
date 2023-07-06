@@ -10,3 +10,5 @@ ja:
           title: タイトル
           content: 詳細
           shooting_date: 撮影日
+          latitude: 緯度
+          longitude: 経度

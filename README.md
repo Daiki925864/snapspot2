@@ -40,7 +40,7 @@ https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4
 # 実装予定の機能
 
 # テーブル設計
-[![Image from Gyazo](https://i.gyazo.com/73d4cba53597b3b1d8a37b7d63eaceef.png)](https://gyazo.com/73d4cba53597b3b1d8a37b7d63eaceef)
+[![Image from Gyazo](https://i.gyazo.com/926ffd9e78b41fd984300e1264988c3f.png)](https://gyazo.com/926ffd9e78b41fd984300e1264988c3f)
 
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/b10e2a60fbfbe392260e2746a009d977.png)](https://gyazo.com/b10e2a60fbfbe392260e2746a009d977)
