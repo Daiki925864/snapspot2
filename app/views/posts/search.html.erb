@@ -4,7 +4,7 @@
       <div class="col-lg-6 col-md-8 mx-auto">
 
         <!-- ワード検索結果 -->
-        <div class="fs-5 mt-3">
+        <div class="h4 mt-3">
           <% if params[:keyword].present? %>
             "<%= params[:keyword] %>" の検索結果
           <% end %>
@@ -18,7 +18,13 @@
           <% end %>
         </div>
         <!-- /ワード検索結果 -->
-        
+
+        <!-- spot一覧表示 -->
+        <% if params[:keyword].present? %>
+          <%= render partial: "spot_list", locals: { collection: @post } %>
+        <% end %>
+        <!-- spot一覧表示 -->
+
         <!-- ワード検索フォーム -->
         <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
           <%= f.text_field :keyword, placeholder: "タイトルまたは投稿内容で撮影スポットを探す", class: "form-control me-2" %>

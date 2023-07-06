@@ -20,13 +20,19 @@
         <!-- /Welcome -->
 
         <!-- タグ検索結果 -->
-        <div class="fs-5 my-3">
+        <div class="h4 my-3">
           <% if params[:tag_id].present? %>
             <% tag = Tag.find_by(id: params[:tag_id]) %>
             # <%= tag.tag_name %> の投稿一覧
           <% end %>
         </div>
         <!-- /タグ検索結果 -->
+
+        <!-- spot一覧表示 -->
+        <% if params[:tag_id].present? %>
+          <%= render partial: "spot_list", locals: { collection: @post } %>
+        <% end %>
+        <!-- spot一覧表示 -->
 
         <!-- ワード検索フォーム -->
         <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
