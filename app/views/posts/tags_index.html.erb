@@ -1,7 +1,7 @@
 <main class="container-sm w-75 p-3">
   <h1 class="h1 mb-3 fw-normal">Tag List</h1>
-  <% @tags.each do |t| %>
-    <%= link_to "##{t.tag_name}", posts_path(tag_id: t.id)%>
+  <% @tags.each do |tag| %>
+    <%= link_to "##{t.tag_name}", posts_path(tag_id: tag.id)%>
     <span>　</span>
   <% end %>
 </main>
