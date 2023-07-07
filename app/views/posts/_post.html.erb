@@ -14,11 +14,11 @@
               <h4 class="card-title"><%= post.title %></h4>
               <p class="card-text"><%= post.content %></p>
               <div class="d-flex justify-content-between align-items-center mt-3">
-                <div class="small">
-                  <% if post.impressionist_count(:filter => :session_hash) >= 2 %>
-                    <%= post.impressionist_count(:filter=>:session_hash) %> views
+                <div class="text-muted">
+                  <% if post.impressions_count >= 2 %>
+                    <%= post.impressions_count %> views
                   <% else %>
-                    <%= post.impressionist_count(:filter=>:session_hash) %> view
+                    <%= post.impressions_count %> view
                   <% end %>
                 </div>
                 <div class="text-muted">

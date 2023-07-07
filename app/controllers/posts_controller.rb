@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
-    impressionist(@post, nil, unique: [:session_hash.to_s])
+    impressionist(@post, nil, unique: [:impressionable_id, :ip_address]) #PV数を取得
   end
 
   def edit
@@ -57,6 +57,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+  end
+
+  def  most_viewed
+    @posts = Post.find(Impression.group(:impressionable_id).order('count(impressionable_id) desc').limit(5).pluck(:impressionable_id))
   end
 
   def search
