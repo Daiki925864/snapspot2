@@ -76,3 +76,5 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'rails-i18n'
 
 gem 'kaminari'
+
+gem 'impressionist', '~>1.6.1'

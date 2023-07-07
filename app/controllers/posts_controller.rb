@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search, :tags_index]
   before_action :set_post, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  impressionist :actions => [:show]
   
   def index
     if params[:tag_id].present?
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
+    impressionist(@post, nil, unique: [:session_hash.to_s])
   end
 
   def edit
