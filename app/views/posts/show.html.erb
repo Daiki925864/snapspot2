@@ -34,7 +34,9 @@
 
   <div class="container text-center">
     <span class="fs-5">
-      <%= "##{@post.tags.first&.tag_name}" %><!-- <%= link_to "##{@post.tags.first&.tag_name}", posts_path(tag_id: @post.tags.ids) %> -->
+      <% @post.tags.each do |tag| %>
+        <%= link_to "##{tag.tag_name}", posts_path(tag_id: tag.id) %>
+      <% end %>
     </span>
   </div>
 
