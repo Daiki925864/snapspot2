@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  is_impressionable counter_cache: true
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :post_tag_relations, dependent: :destroy

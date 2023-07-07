@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search, :tags_index]
   before_action :set_post, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  impressionist :actions => [:show]
   
   def index
     if params[:tag_id].present?
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
+    impressionist(@post, nil, unique: [:impressionable_id, :ip_address]) #PV数を取得
   end
 
   def edit
@@ -55,6 +57,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+  end
+
+  def  most_viewed
+    @posts = Post.find(Impression.group(:impressionable_id).order('count(impressionable_id) desc').limit(5).pluck(:impressionable_id))
   end
 
   def search

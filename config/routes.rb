@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "posts#index"
   resources :posts do
     collection do
+      get 'most_viewed'
       get 'search'
       get 'search_tag'
       get 'tags_index'
