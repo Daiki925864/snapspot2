@@ -6,9 +6,9 @@ Rails.application.routes.draw do
       get 'most_viewed'
       get 'search'
       get 'search_tag'
-      get 'tags_index'
     end
     resources :comments, only: [:create, :destroy]
   end
+  resources :tags, only: :index
   resources :users, only: :show
 end

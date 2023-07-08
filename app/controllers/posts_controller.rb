@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :search, :tags_index]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_post, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   impressionist :actions => [:show]
@@ -71,10 +71,6 @@ class PostsController < ApplicationController
     return nil if params[:keyword] == ""
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
-  end
-
-  def tags_index
-    @tags = Tag.all.order("tag_name ASC")
   end
 
   private
