@@ -1,6 +1,20 @@
 <main>
   <section class="py-5 text-center container">
-    <h1 class="h1 mb-5 fw-normal">Most Viewed Spot</h1>
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <div class="h4 mb-3">Most Viewed Spot</div>
+
+      <!-- spot一覧表示 -->
+      <%= render partial: "spot_list", locals: { collection: @post } %>
+      <!-- spot一覧表示 -->
+
+      <!-- ワード検索フォーム -->
+      <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
+        <%= f.text_field :keyword, placeholder: "タイトルまたは投稿内容で撮影スポットを探す", class: "form-control me-2" %>
+        <%= f.submit "Search", class: "btn btn-secondary" %>
+      <% end %>
+      <!-- /ワード検索フォーム -->
+    </div>
   </section>
+
   <%= render partial: "post", locals: { collection: @post } %>
 </main>
