@@ -34,8 +34,11 @@
   <div class="form-floating">
     <%= form.text_field :tag_name, class: "form-control", id: "tag_name_floatingInput", placeholder: 'Add Tags' %>
     <%= form.label :tag_name, "#タグ", class: "form-label", for: "floatingInput" %>
+    <div class="d-flex justify-content-center">
+      <ul class="list-group w-50" id="search-result"></ul>
+    </div>
   </div>
-  <ul class="list-group" id="search-result"></ul>
+
 
   <!-- /投稿詳細入力フォーム -->
 
