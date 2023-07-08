@@ -4,10 +4,12 @@
       <% @posts.each do |post| %>
         <div class="col">
           <div class="card shadow-sm">
+            <div class="img-case">
             <div class="img-fluid">
               <%= link_to post_path(post.id) do %>
-                <%= image_tag post.image, class: "bd-placeholder-img card-img-top h-100" %>
+                <%= image_tag post.image, class: "bd-placeholder-img card-img-top cropped-image" %>
               <% end %>
+            </div>
             </div>
 
             <div class="card-body">
@@ -34,3 +36,23 @@
     </div>
   </div>
 </div>
+
+<style>
+.img-case {
+  width: 100%;
+  height: 0;
+  padding: 28.125% 0; /* 16:9のアスペクト比 */
+  position: relative;
+  overflow: hidden;
+}
+
+.img-case .img-fluid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+</style>
