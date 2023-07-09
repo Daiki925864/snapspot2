@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :tags, only: :index
   resources :users, only: :show
+  resources :categories, only: :index
 end
