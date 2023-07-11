@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @maincategories = Category.all.order("id ASC").limit(6)
     @post_form = PostForm.new
   end
 

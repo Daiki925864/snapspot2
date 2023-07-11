@@ -1,0 +1,32 @@
+categories#show
+
+
+<main>
+  <section class="py-5 text-center container">
+    <div class="col-lg-6 col-md-8 mx-auto">
+
+      <!-- カテゴリー検索結果 -->
+      <div class="h4 my-3">
+        <%= @category.category_name %> の投稿一覧
+      </div>
+      <!-- /カテゴリー検索結果 -->
+
+      <!-- spot一覧表示 -->
+      <%= render partial: "posts/spot_list", locals: { collection: @posts } %>
+      <!-- spot一覧表示 -->
+
+      <!-- ワード検索フォーム -->
+      <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
+        <%= f.text_field :keyword, placeholder: "タイトルまたは投稿内容で撮影スポットを探す", class: "form-control me-2" %>
+        <%= f.submit "Search", class: "btn btn-secondary" %>
+      <% end %>
+      <!-- /ワード検索フォーム -->
+    </div>
+  </section>
+
+  <%= render partial: "posts/post", locals: { collection: @posts } %>
+  <div class="d-flex justify-content-center mt-3">
+    <%= paginate @posts %>
+  </div>
+</main>
+
