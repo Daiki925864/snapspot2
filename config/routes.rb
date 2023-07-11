@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:create, :destroy]
   end
-  resources :tags, only: :index
+  resources :tags, only: [:index, :show]
   resources :users, only: :show
-  resources :categories, only: :index
+  resources :categories, only: [:index, :show]
 end

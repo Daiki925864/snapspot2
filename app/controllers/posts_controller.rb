@@ -5,11 +5,7 @@ class PostsController < ApplicationController
   impressionist :actions => [:show]
   
   def index
-    if params[:tag_id].present?
-      @posts = Tag.find(params[:tag_id]).posts.order("created_at DESC").page(params[:page]).per(6)
-    else
-      @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
-    end
+    @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def new
