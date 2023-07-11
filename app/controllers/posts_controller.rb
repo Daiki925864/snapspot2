@@ -32,6 +32,7 @@ class PostsController < ApplicationController
   def edit
     # @postから情報をハッシュとして取り出し、@post_formとしてインスタンス生成する
     post_attributes = @post.attributes
+    @maincategories = Category.all.order("id ASC").limit(6)
     @post_form = PostForm.new(post_attributes)
     @post_form.tag_name = @post.tags.first&.tag_name
   end
@@ -73,7 +74,7 @@ class PostsController < ApplicationController
   private
 
   def post_form_params
-    params.require(:post_form).permit(:title, :content, :shooting_date, :address, :tag_name, :category_name, :image, :latitude, :longitude).merge(user_id: current_user.id)
+    params.require(:post_form).permit(:title, :content, :shooting_date, :address, :tag_name, :category_name, :image, :latitude, :longitude, :category_id).merge(user_id: current_user.id)
   end
 
   def set_post

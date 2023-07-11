@@ -6,7 +6,7 @@ class PostForm
     :title, :content, :shooting_date,
     :address, :latitude, :longitude, :image,
     :id, :created_at, :updated_at, :user_id,
-    :tag_name, :category_name
+    :tag_name, :category_id, :impressions_count
   )
 
   with_options presence: true do
@@ -19,7 +19,7 @@ class PostForm
   end
 
   def save
-    post = Post.create(title: title, content: content, shooting_date: shooting_date, address: address, latitude: latitude, longitude: longitude, image: image, user_id: user_id)
+    post = Post.create(title: title, content: content, shooting_date: shooting_date, address: address, latitude: latitude, longitude: longitude, image: image, user_id: user_id, category_id: category_id)
     if tag_name.present?
       tag = Tag.where(tag_name: tag_name).first_or_initialize
       tag.save
