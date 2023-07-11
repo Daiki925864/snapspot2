@@ -6,7 +6,7 @@ class PostForm
     :title, :content, :shooting_date,
     :address, :latitude, :longitude, :image,
     :id, :created_at, :updated_at, :user_id,
-    :tag_name
+    :tag_name, :category_name
   )
 
   with_options presence: true do
