@@ -177,11 +177,17 @@
         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
           <div class="accordion-body">
             <div class="container">
-              <span class="fs-5 fw-bold">
-                <% @post.tags.each do |tag| %>
-                  <%= link_to "##{tag.tag_name}", posts_path(tag_id: tag.id), class:"text-decoration-none" %>
-                <% end %>
-              </span>
+              <div class="fs-5 fw-bold">
+                <div>
+                  <strong>カテゴリー</strong>
+                </div>
+                <div class="mt-3">
+                  <strong>#タグ</strong>
+                  <% @post.tags.each do |tag| %>
+                    <%= link_to "##{tag.tag_name}", posts_path(tag_id: tag.id), class:"text-decoration-none" %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

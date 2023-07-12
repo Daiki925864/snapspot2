@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :users, only: :show
   resources :categories, only: [:index, :show]
+  get '/category/:id', to: 'categories#search'
 end

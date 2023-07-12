@@ -31,12 +31,17 @@
     <%= form.label :shooting_date, "撮影日", class: "form-label", for: "floatingInput" %>
   </div>
 
+  <br>
+  <div class="w-75">
   <div class="form-floating" id="select-wrap">
     <%= form.collection_select(:category_id, @maincategories, :id, :category_name, {include_blank: "---"}, {class:"form-select", id:"parent-category"}) %>
     <%= form.label :category_id, "カテゴリー", class: "form-label", for: "floatingInput" %>
   </div>
+  </div>
 
-  <div class="form-floating">
+  <br>
+
+  <div class="form-floating w-75">
     <%= form.text_field :tag_name, class: "form-control", id: "tag_name_floatingInput", placeholder: 'Add Tags' %>
     <%= form.label :tag_name, "#タグ", class: "form-label", for: "floatingInput" %>
     <div class="d-flex justify-content-center">
