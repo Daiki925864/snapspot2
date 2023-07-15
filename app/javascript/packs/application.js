@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require('../preview')
 require("../tag")
+require("../category")
 import "bootstrap"
 import "../stylesheets/application"
 

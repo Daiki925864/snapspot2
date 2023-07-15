@@ -61,8 +61,11 @@ group :production do
 end
 
 gem 'devise'
+gem 'ancestry'
+gem 'impressionist', '~>1.6.1'
 
 gem 'pry-rails'
+gem 'rails-i18n'
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
@@ -72,9 +75,4 @@ gem 'geocoder'
 gem 'momentjs-rails'
 
 gem 'bootstrap3-datetimepicker-rails'
-
-gem 'rails-i18n'
-
 gem 'kaminari'
-
-gem 'impressionist', '~>1.6.1'

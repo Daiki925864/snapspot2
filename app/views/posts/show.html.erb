@@ -22,12 +22,12 @@
     <div class="d-flex justify-content-center">
       <div class>
         <p class="fs-5 fw-bold">撮影日</p>
-        <p class="fs-6 fw-light"><%= @post.shooting_date.strftime('%Y/%m/%d') %></p>
+        <p class="fs-6"><%= @post.shooting_date.strftime('%Y/%m/%d') %></p>
       </div>
       <div class="mx-2">　</div>
       <div class>
         <p class="fs-5 fw-bold">投稿者</p>
-        <p class="fs-6 fw-light"><%= link_to "#{@post.user.nickname}", user_path(@post.user) %></p>
+        <p class="fs-6"><%= link_to "#{@post.user.nickname}", user_path(@post.user), class:"text-decoration-none fw-bold" %></p>
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@
   <div class="container text-center">
     <span class="fs-5">
       <% @post.tags.each do |tag| %>
-        <%= link_to "##{tag.tag_name}", posts_path(tag_id: tag.id) %>
+        <%= link_to "##{tag.tag_name}", posts_path(tag_id: tag.id), class:"text-decoration-none fw-bold" %>
       <% end %>
     </span>
   </div>
@@ -72,12 +72,12 @@
   <div class="container d-flex justify-content-between mt-5">
     <div class>
       <% if @post.previous.present? %>
-        <%= link_to "< PREV", post_path(@post.previous), class: "btn btn-outline-secondary btn-sm mt-3"%>
+        <%= link_to "< PREV", post_path(@post.previous), class: "btn btn-outline-primary btn-sm fw-bold mt-3"%>
       <% end %>
     </div>
     <div class>
       <% if @post.next.present? %>
-        <%= link_to "NEXT >", post_path(@post.next), class: "btn btn-outline-secondary btn-sm mt-3"%>
+        <%= link_to "NEXT >", post_path(@post.next), class: "btn btn-outline-primary btn-sm fw-bold mt-3"%>
       <% end %>
     </div>
   </div>
@@ -177,7 +177,18 @@
         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
           <div class="accordion-body">
             <div class="container">
-              <span class="fs-6"># <%= @post.tags.first&.tag_name %></span>
+              <div class="fs-5 fw-bold">
+                <div>
+                  <strong>カテゴリー</strong>
+                  <%= link_to "##{@post.category.category_name}", "#", class:"text-decoration-none" %>
+                </div>
+                <div class="mt-3">
+                  <strong>#タグ</strong>
+                  <% @post.tags.each do |tag| %>
+                    <%= link_to "##{tag.tag_name}", posts_path(tag_id: tag.id), class:"text-decoration-none" %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -54,7 +54,10 @@
                 <%= link_to "Most Viewed", most_viewed_posts_path, class: "nav-link active" %>
               </li>
               <li class="nav-item">
-                <%= link_to "Tag List", tags_index_posts_path, class: "nav-link active" %>
+                <%= link_to "Categories", categories_path, class: "nav-link active" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Tag List", tags_path, class: "nav-link active" %>
               </li>
             </ul>
             <% if user_signed_in? %>

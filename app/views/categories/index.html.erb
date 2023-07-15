@@ -1,0 +1,15 @@
+<main class="container-sm w-75 p-3">
+  <h1 class="h1 mb-3 fw-normal text-center">Category List</h1>
+
+  <ul class="categories">
+    <% @parents.each do |parent| %>
+      <li class="parents mt-3"><%= link_to parent.category_name, "#", class:"text-decoration-none fw-bold" %></li>
+      <ul class="categories__children">
+        <% parent.children.each do |child| %>
+          <li class="children"><%= link_to child.category_name, "#", class:"text-decoration-none fw-bold" %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </ul>
+  
+</main>

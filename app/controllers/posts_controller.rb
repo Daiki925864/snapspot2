@@ -1,18 +1,15 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :search, :tags_index]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_post, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   impressionist :actions => [:show]
   
   def index
-    if params[:tag_id].present?
-      @posts = Tag.find(params[:tag_id]).posts.order("created_at DESC").page(params[:page]).per(6)
-    else
-      @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
-    end
+    @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def new
+    @maincategories = Category.all.order("id ASC").limit(6)
     @post_form = PostForm.new
   end
 
@@ -35,6 +32,7 @@ class PostsController < ApplicationController
   def edit
     # @postから情報をハッシュとして取り出し、@post_formとしてインスタンス生成する
     post_attributes = @post.attributes
+    @maincategories = Category.all.order("id ASC").limit(6)
     @post_form = PostForm.new(post_attributes)
     @post_form.tag_name = @post.tags.first&.tag_name
   end
@@ -45,6 +43,9 @@ class PostsController < ApplicationController
 
     # 画像を選択し直していない場合は、既存の画像をセットする
     @post_form.image ||= @post.image.blob
+
+    # paramsにcategory_idを追加する
+    params[:post_form][:category_id] = params[:category_id]
 
     if @post_form.valid?
       @post_form.update(post_form_params, @post)
@@ -73,14 +74,10 @@ class PostsController < ApplicationController
     render json:{ keyword: tag }
   end
 
-  def tags_index
-    @tags = Tag.all.order("tag_name ASC")
-  end
-
   private
 
   def post_form_params
-    params.require(:post_form).permit(:title, :content, :shooting_date, :address, :tag_name, :image, :latitude, :longitude).merge(user_id: current_user.id)
+    params.require(:post_form).permit(:title, :content, :shooting_date, :address, :tag_name, :category_name, :latitude, :longitude, :category_id, :image).merge(user_id: current_user.id)
   end
 
   def set_post

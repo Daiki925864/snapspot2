@@ -1,37 +1,35 @@
 <main>
   <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
+    <div class="col-lg-6 col-md-8 mx-auto">
 
-        <!-- ワード検索結果 -->
-        <div class="h4 mt-3">
-          <% if params[:keyword].present? %>
-            "<%= params[:keyword] %>" の検索結果
-          <% end %>
-        </div>
-        <div class="my-3">
-          <% if @posts.blank? %>
-            <div class="lead">該当する投稿はありませんでした。</div>
-            <br>
-            <div>タイトルまたは投稿内容で検索してください。</div>
-            <div>タグで投稿を検索するには"Tag List"を使用してください。</div>
-          <% end %>
-        </div>
-        <!-- /ワード検索結果 -->
-
-        <!-- spot一覧表示 -->
+      <!-- ワード検索結果 -->
+      <div class="h4">
         <% if params[:keyword].present? %>
-          <%= render partial: "spot_list", locals: { collection: @post } %>
+          "<%= params[:keyword] %>" の検索結果
         <% end %>
-        <!-- spot一覧表示 -->
-
-        <!-- ワード検索フォーム -->
-        <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
-          <%= f.text_field :keyword, placeholder: "タイトルまたは投稿内容で撮影スポットを探す", class: "form-control me-2" %>
-          <%= f.submit "Search", class: "btn btn-secondary" %>
-        <% end %>
-        <!-- /ワード検索フォーム -->
       </div>
+      <div class="my-3">
+        <% if @posts.blank? %>
+          <div class="lead">該当する投稿はありませんでした。</div>
+          <br>
+          <div>タイトルまたは投稿内容で検索してください。</div>
+          <div>タグで投稿を検索するには"Tag List"を使用してください。</div>
+        <% end %>
+      </div>
+      <!-- /ワード検索結果 -->
+
+      <!-- spot一覧表示 -->
+      <% if @posts.present? %>
+        <%= render partial: "spot_list", locals: { collection: @post } %>
+      <% end %>
+      <!-- spot一覧表示 -->
+
+      <!-- ワード検索フォーム -->
+      <%= form_with(url: search_posts_path, local: true, method: :get, class: "d-flex") do |f| %>
+        <%= f.text_field :keyword, placeholder: "タイトルまたは投稿内容で撮影スポットを探す", class: "form-control me-2" %>
+        <%= f.submit "Search", class: "btn btn-secondary" %>
+      <% end %>
+      <!-- /ワード検索フォーム -->
     </div>
   </section>
 

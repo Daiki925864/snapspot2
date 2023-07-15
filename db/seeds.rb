@@ -1,7 +1,61 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# 親カテゴリー
+Category.create(category_name: '自然風景')
+Category.create(category_name: '街並み')
+Category.create(category_name: '乗り物')
+Category.create(category_name: '動物')
+Category.create(category_name: '植物')
+Category.create(category_name: 'その他')
+
+# 自然風景の子カテゴリー
+nature_scenery = Category.find_by(category_name: '自然風景')
+Category.create(category_name: '山', parent: nature_scenery)
+Category.create(category_name: '森林', parent: nature_scenery)
+Category.create(category_name: '海', parent: nature_scenery)
+Category.create(category_name: '湖沼', parent: nature_scenery)
+Category.create(category_name: '河川', parent: nature_scenery)
+Category.create(category_name: '滝', parent: nature_scenery)
+Category.create(category_name: '空', parent: nature_scenery)
+Category.create(category_name: 'その他', parent: nature_scenery)
+
+# 街並みの子カテゴリー
+city_scenery = Category.find_by(category_name: '街並み')
+Category.create(category_name: '街並み', parent: city_scenery)
+Category.create(category_name: '夜景', parent: city_scenery)
+Category.create(category_name: 'ビル', parent: city_scenery)
+Category.create(category_name: 'タワー', parent: city_scenery)
+Category.create(category_name: '寺', parent: city_scenery)
+Category.create(category_name: '神社', parent: city_scenery)
+Category.create(category_name: '教会', parent: city_scenery)
+Category.create(category_name: '公園', parent: city_scenery)
+Category.create(category_name: 'その他', parent: city_scenery)
+
+# 乗り物の子カテゴリー
+vehicles = Category.find_by(category_name: '乗り物')
+Category.create(category_name: '車バイク', parent: vehicles)
+Category.create(category_name: '航空機', parent: vehicles)
+Category.create(category_name: '船', parent: vehicles)
+Category.create(category_name: '鉄道', parent: vehicles)
+Category.create(category_name: 'その他', parent: vehicles)
+
+# 動物の子カテゴリー
+animals = Category.find_by(category_name: '動物')
+Category.create(category_name: '犬', parent: animals)
+Category.create(category_name: '猫', parent: animals)
+Category.create(category_name: '小動物', parent: animals)
+Category.create(category_name: '家畜', parent: animals)
+Category.create(category_name: '鳥類', parent: animals)
+Category.create(category_name: '魚類', parent: animals)
+Category.create(category_name: '爬虫類', parent: animals)
+Category.create(category_name: '両生類', parent: animals)
+Category.create(category_name: '虫', parent: animals)
+Category.create(category_name: 'その他', parent: animals)
+
+# 植物の子カテゴリー
+plants = Category.find_by(category_name: '植物')
+Category.create(category_name: '花', parent: plants)
+Category.create(category_name: '樹木', parent: plants)
+Category.create(category_name: 'キノコ', parent: plants)
+Category.create(category_name: 'コケ', parent: plants)
+Category.create(category_name: '桜', parent: plants)
+Category.create(category_name: '紅葉', parent: plants)
+Category.create(category_name: 'その他', parent: plants)
