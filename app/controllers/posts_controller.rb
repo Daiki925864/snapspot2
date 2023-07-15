@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     @post_form.image ||= @post.image.blob
 
     # paramsにcategory_idを追加する
-    params[:post_form][:category_id] = params[:category_id]
+    # params[:post_form][:category_id] = params[:category_id]
 
     if @post_form.valid?
       @post_form.update(post_form_params, @post)
