@@ -3,10 +3,10 @@
 
   <ul class="categories">
     <% @parents.each do |parent| %>
-      <li class="parents mt-3"><%= link_to parent.category_name, posts_path(), class:"text-decoration-none fw-bold" %></li>
+      <li class="parents mt-3"><%= link_to parent.category_name, "#", class:"text-decoration-none fw-bold" %></li>
       <ul class="categories__children">
         <% parent.children.each do |child| %>
-          <li class="children"><%= link_to child.category_name, posts_path(), class:"text-decoration-none fw-bold" %></li>
+          <li class="children"><%= link_to child.category_name, "#", class:"text-decoration-none fw-bold" %></li>
         <% end %>
       </ul>
     <% end %>

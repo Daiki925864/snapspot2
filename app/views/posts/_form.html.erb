@@ -33,10 +33,21 @@
 
   <br>
   <div class="w-75">
-  <div class="form-floating" id="select-wrap">
-    <%= form.collection_select(:category_id, @maincategories, :id, :category_name, {include_blank: "---"}, {class:"form-select", id:"parent-category"}) %>
-    <%= form.label :category_id, "カテゴリー", class: "form-label", for: "floatingInput" %>
-  </div>
+    <div class="form-floating" id="select-wrap">
+      <%= form.collection_select(:category_id, @maincategories, :id, :category_name, {include_blank: "---"}, {class:"form-select", id:"parent-category"}) %>
+      <%= form.label :category_id, "カテゴリー", class: "form-label", for: "floatingInput" %>
+    </div>
+    <!--
+    <div class="form-floating" id="select-wrap">
+      <select class="form-select" id="parent-category" name="item[category_id]">
+        <option value="">---</option>
+        <% @maincategories.each do |maincategory| %>
+          <option value="<%= maincategory.id %>"><%= maincategory.category_name %></option>
+        <% end %>
+      </select>
+      <label class="form-label" for="floatingInput">カテゴリー</label>
+    </div>
+    -->
   </div>
 
   <br>

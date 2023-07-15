@@ -44,6 +44,9 @@ class PostsController < ApplicationController
     # 画像を選択し直していない場合は、既存の画像をセットする
     @post_form.image ||= @post.image.blob
 
+    # paramsにcategory_idを追加する
+    params[:post_form][:category_id] = params[:category_id]
+
     if @post_form.valid?
       @post_form.update(post_form_params, @post)
       redirect_to post_path(@post.id)
@@ -74,7 +77,7 @@ class PostsController < ApplicationController
   private
 
   def post_form_params
-    params.require(:post_form).permit(:title, :content, :shooting_date, :address, :tag_name, :category_name, :image, :latitude, :longitude, :category_id).merge(user_id: current_user.id)
+    params.require(:post_form).permit(:title, :content, :shooting_date, :address, :tag_name, :category_name, :latitude, :longitude, :category_id, :image).merge(user_id: current_user.id)
   end
 
   def set_post
