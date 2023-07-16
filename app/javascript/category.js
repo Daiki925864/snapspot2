@@ -44,6 +44,12 @@ window.addEventListener('load', function () {
     childSelect.classList.add('form-select')
     childSelect.setAttribute('name', 'category_id');
 
+    // 最初の選択肢として空のオプションを追加
+    const blankOption = document.createElement('option');
+    blankOption.innerHTML = '---';
+    blankOption.setAttribute('value', '');
+    childSelect.appendChild(blankOption);
+
     // forEach文でitem（子カテゴリーの値）を繰り返す
     items.forEach(item => {
       const childOption = document.createElement('option')

@@ -14,6 +14,11 @@ class PostsController < ApplicationController
   end
 
   def create
+    # paramsに子カテゴリーが存在すればcategory_idに代入する
+    if params[:category_id].present?
+      params[:post_form][:category_id] = params[:category_id]
+    end
+
     @post_form = PostForm.new(post_form_params)
     if @post_form.valid?
       @post_form.save
@@ -38,14 +43,16 @@ class PostsController < ApplicationController
   end
 
   def update
+    # paramsに子カテゴリーが存在すればcategory_idに代入する
+    if params[:category_id].present?
+      params[:post_form][:category_id] = params[:category_id]
+    end
+
     # paramsの内容を反映したインスタンスを生成する
     @post_form = PostForm.new(post_form_params)
 
     # 画像を選択し直していない場合は、既存の画像をセットする
     @post_form.image ||= @post.image.blob
-
-    # paramsにcategory_idを追加する
-    # params[:post_form][:category_id] = params[:category_id]
 
     if @post_form.valid?
       @post_form.update(post_form_params, @post)

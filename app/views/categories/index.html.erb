@@ -2,11 +2,11 @@
   <h1 class="h1 mb-3 fw-normal text-center">Category List</h1>
 
   <ul class="categories">
-    <% @parents.each do |parent| %>
-      <li class="parents mt-3"><%= link_to parent.category_name, "#", class:"text-decoration-none fw-bold" %></li>
+    <% @mains.each do |main| %>
+      <li class="parents mt-3"><%= link_to main.category_name, category_path(main.id), class:"text-decoration-none fw-bold" %></li>
       <ul class="categories__children">
-        <% parent.children.each do |child| %>
-          <li class="children"><%= link_to child.category_name, "#", class:"text-decoration-none fw-bold" %></li>
+        <% main.children.each do |sub| %>
+          <li class="children"><%= link_to sub.category_name, category_path(sub.id), class:"text-decoration-none fw-bold" %></li>
         <% end %>
       </ul>
     <% end %>
