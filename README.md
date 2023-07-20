@@ -76,5 +76,6 @@ https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4
 ## 階層構造のカテゴリーの実装
 Gem ancestryを導入し、階層構造のカテゴリーを実装した。
 また、新規投稿画面、編集画面で逐次下階層のカテゴリーを自動で表示されるようにした。
+
 ## タグ付け機能に逐次検索機能を実装
 新規投稿画面、編集画面でタグを入力する際に、DBに保存されているタグ情報を候補として自動的に検索が行われるようにした。
