@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    @maincategories = Category.all.order("id ASC").limit(6)
     # paramsに子カテゴリーが存在すればcategory_idに代入する
     if params[:category_id].present?
       params[:post_form][:category_id] = params[:category_id]
