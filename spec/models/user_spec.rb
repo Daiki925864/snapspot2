@@ -16,6 +16,9 @@ RSpec.describe User, type: :model do
       it 'nicknameが空では登録できない' do
         @user.nickname = ""
         @user.valid?
+        
+        binding.pry
+        
         expect(@user.errors.full_messages).to include('ニックネームを入力してください')
       end
 
