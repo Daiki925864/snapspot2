@@ -52,7 +52,7 @@ https://docs.google.com/spreadsheets/d/1uJPm3l2JeFKdiujgGPQbzL8kdJOQnAzUE5CfSel4
 # 開発環境
 - フロントエンド HTML CSS JavaScript Bootstrap
 - バックエンド ruby  Ruby on Rails
-- インフラ 
+- インフラ AWS S3
 - テスト RSpec
 - テキストエディタ VisualStudioCode
 - タスク管理 GitHub
